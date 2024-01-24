@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "compact_ui",
+  "version": "${version}",
+  "name": "Compact UI",
+  "description": "${description}",
+  "authors": [
+    "MrMelon54"
+  ],
+  "contact": {
+    "homepage": "https://mrmelon54.com/minecraft/compact-ui",
+    "sources": "https://github.com/mrmelon54/compact_ui",
+    "issues": "https://github.com/mrmelon54/compact_ui/issues"
+  },
+  "license": "GPL-3.0-only",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.mrmelon54.CompactUI.fabric.CompactUIFabric"
+    ]
+  },
+  "mixins": [
+    "compact_ui.mixins.json",
+    "compact_ui-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": "${minecraft_version}",
+    "architectury": ">=${architectury_version}"
+  }
+}

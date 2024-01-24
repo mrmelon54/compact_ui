@@ -1,0 +1,26 @@
+modLoader = "javafml"
+loaderVersion = "*"
+issueTrackerURL = "https://github.com/mrmelon54/compact_ui/issues"
+license = "GPL-3.0-only"
+
+[[mods]]
+modId = "compact_ui"
+version = "${version}"
+displayName = "Compact UI"
+authors = "MrMelon54"
+description = "${description}"
+logoFile = "/icon.png"
+
+[[dependencies.compact_ui]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft_version}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.compact_ui]]
+modId = "architectury"
+mandatory = true
+versionRange = "[${architectury_version},)"
+ordering = "NONE"
+side = "BOTH"
