@@ -6,7 +6,12 @@
   "client": [
     "pack.PackEntryMixin",
     "pack.PackSelectionScreenMixin",
-    "pack.TransferableSelectionListMixin"
+    "pack.TransferableSelectionListMixin",
+    "server.JoinMultiplayerScreenMixin",
+    "server.ServerEntryMixin",
+    "server.ServerSelectionListMixin",
+    "world.SelectWorldScreenMixin",
+    "world.WorldSelectionListMixin"
   ],
   "mixins": [
   ],
