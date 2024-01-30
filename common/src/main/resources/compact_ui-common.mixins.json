@@ -8,9 +8,10 @@
     "pack.PackSelectionScreenMixin",
     "pack.TransferableSelectionListMixin",
     "server.JoinMultiplayerScreenMixin",
-    "server.ServerEntryMixin",
+    "server.OnlineServerEntryMixin",
     "server.ServerSelectionListMixin",
     "world.SelectWorldScreenMixin",
+    "world.WorldListEntryMixin",
     "world.WorldSelectionListMixin"
   ],
   "mixins": [

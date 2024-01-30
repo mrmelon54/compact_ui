@@ -8,7 +8,6 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(SelectWorldScreen.class)
 public class SelectWorldScreenMixin implements SingleplayerScreenDuckProvider {
-
     @Shadow
     private WorldSelectionList list;
 

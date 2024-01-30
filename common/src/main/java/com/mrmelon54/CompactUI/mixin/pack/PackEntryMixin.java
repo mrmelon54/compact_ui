@@ -3,7 +3,6 @@ package com.mrmelon54.CompactUI.mixin.pack;
 import com.mrmelon54.CompactUI.CompactUI;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.MultiLineLabel;
 import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.screens.packs.PackSelectionModel;
 import net.minecraft.client.gui.screens.packs.TransferableSelectionList;
@@ -53,10 +52,6 @@ public abstract class PackEntryMixin extends ObjectSelectionList.Entry<PackEntry
     private FormattedCharSequence nameDisplayCache;
 
     @Shadow
-    @Final
-    private MultiLineLabel descriptionDisplayCache;
-
-    @Shadow
     protected abstract boolean showHoverOverlay();
 
     @Shadow
@@ -70,10 +65,6 @@ public abstract class PackEntryMixin extends ObjectSelectionList.Entry<PackEntry
     @Shadow
     @Final
     private FormattedCharSequence incompatibleNameDisplayCache;
-
-    @Shadow
-    @Final
-    private MultiLineLabel incompatibleDescriptionDisplayCache;
 
     @Shadow
     protected abstract boolean handlePackSelection();
@@ -137,7 +128,6 @@ public abstract class PackEntryMixin extends ObjectSelectionList.Entry<PackEntry
             if (f > TWO_THIRD && g <= 32 && this.pack.canMoveDown()) {
                 this.pack.moveDown();
                 cir.setReturnValue(true);
-                return;
             }
         }
     }
