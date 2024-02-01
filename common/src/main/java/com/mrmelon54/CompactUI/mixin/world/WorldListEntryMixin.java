@@ -8,8 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(WorldSelectionList.WorldListEntry.class)
 public class WorldListEntryMixin {
@@ -30,16 +30,12 @@ public class WorldListEntryMixin {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;fill(IIIII)V", ordinal = 0))
     private void moveRenderBg(GuiGraphics instance, int i, int j, int k, int l, int m) {
-        instance.fill(i, j, ONE_THIRD, ONE_THIRD, m);
+        instance.fill(i, j, k - TWO_THIRD - 1, l - TWO_THIRD - 1, m);
     }
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blitSprite(Lnet/minecraft/resources/ResourceLocation;IIII)V"))
     private void moveRenderBlitSprite(GuiGraphics instance, ResourceLocation resourceLocation, int i, int j, int k, int l) {
-        if (k == 32 && l == 32) {
-            k = ONE_THIRD;
-            l = ONE_THIRD;
-        }
-        instance.blitSprite(resourceLocation, i, j, k, l);
+        instance.blitSprite(resourceLocation, i, j, k - TWO_THIRD - 1, l - TWO_THIRD - 1);
     }
 
     @WrapWithCondition(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Ljava/lang/String;IIIZ)I", ordinal = 1))
@@ -50,5 +46,10 @@ public class WorldListEntryMixin {
     @WrapWithCondition(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;drawString(Lnet/minecraft/client/gui/Font;Lnet/minecraft/network/chat/Component;IIIZ)I", ordinal = 0))
     private boolean disableRenderLine3(GuiGraphics instance, Font font, Component component, int i, int j, int k, boolean bl) {
         return false;
+    }
+
+    @ModifyConstant(method = "mouseClicked", constant = @Constant(doubleValue = 32.0))
+    private double injectedMouseClicked(double constant) {
+        return ONE_THIRD;
     }
 }
